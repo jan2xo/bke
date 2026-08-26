@@ -1,39 +1,45 @@
 ---
 name: bke
-description: Use the connected GitHub App with the BKE-approved read-only and write tool catalog, while treating BKE as a policy wrapper rather than a callable namespace.
+description: Use the GitHub connector with the BKE-approved read-only and write tool catalog. Invoke tools through the actual `GitHub` callable namespace exposed by the runtime.
 ---
 
 # BKE
 
 BKE is an instruction and policy wrapper for GitHub engineering work.
 
-It is not a callable tool namespace, connector, MCP server, or API. Do not invent or invoke `BKE.*`, `bke.*`, `@BKE.*`, or `plugin://bke...` as functions.
+## Connector and callable namespace
 
-When this skill is active, use the connected GitHub tool namespace that is actually exposed in the current runtime for repository, issue, pull request, commit, file, branch, review, and workflow operations.
+Use the connected GitHub connector for all repository, issue, pull request, commit, file, branch, review, and workflow operations.
 
-## Tool routing
+The callable tool namespace is `GitHub`.
 
-- The catalogs below describe BKE-approved GitHub operations; they are not functions owned by a `BKE` namespace.
-- Treat the runtime's exposed GitHub tools as authoritative for what can actually be invoked in the current session.
-- Invoke cataloged operations through the underlying GitHub tool namespace actually exposed by the runtime.
-- Never translate a catalog entry into `BKE.<function>`, `bke.<function>`, or any other invented namespace.
-- If a cataloged operation is not exposed by the current GitHub runtime, do not fabricate it; report that it is unavailable in the current session.
+Examples:
+
+- `GitHub.get_repo`
+- `GitHub.fetch_file`
+- `GitHub.update_file`
+- `GitHub.create_pull_request`
+- `GitHub.fetch_commit_workflow_runs`
+
+BKE is not itself a callable namespace, connector, MCP server, or API. Never invent or invoke `BKE.*`, `bke.*`, `@BKE.*`, or `plugin://bke...` as functions.
+
+The catalogs below use fully qualified callable names. Treat the GitHub tools actually exposed in the current runtime as authoritative. If a cataloged callable is not exposed in the current session, do not fabricate it; report that it is unavailable.
 
 ## Write tools
 
-`add_comment_to_issue`, `add_issue_assignees`, `add_issue_labels`, `add_reaction_to_issue_comment`, `add_reaction_to_pr`, `add_reaction_to_pr_review_comment`, `add_review_to_pr`, `convert_pull_request_to_draft`, `create_blob`, `create_branch`, `create_check_run`, `create_commit`, `create_file`, `create_issue`, `create_pull_request`, `create_tree`, `delete_file`, `dismiss_pull_request_review`, `enable_auto_merge`, `label_pr`, `lock_issue_conversation`, `mark_pull_request_ready_for_review`, `merge_pull_request`, `remove_issue_assignees`, `remove_issue_label`, `remove_pull_request_reviewers`, `remove_reaction_from_issue_comment`, `remove_reaction_from_pr`, `remove_reaction_from_pr_review_comment`, `reply_to_review_comment`, `request_pull_request_reviewers`, `rerun_failed_workflow_run_jobs`, `rerun_workflow_job`, `resolve_review_thread`, `unlock_issue_conversation`, `unresolve_review_thread`, `update_check_run`, `update_file`, `update_issue`, `update_issue_comment`, `update_pull_request`, `update_ref`, `update_review_comment`.
+`GitHub.add_comment_to_issue`, `GitHub.add_issue_assignees`, `GitHub.add_issue_labels`, `GitHub.add_reaction_to_issue_comment`, `GitHub.add_reaction_to_pr`, `GitHub.add_reaction_to_pr_review_comment`, `GitHub.add_review_to_pr`, `GitHub.convert_pull_request_to_draft`, `GitHub.create_blob`, `GitHub.create_branch`, `GitHub.create_commit`, `GitHub.create_file`, `GitHub.create_issue`, `GitHub.create_pull_request`, `GitHub.create_tree`, `GitHub.delete_file`, `GitHub.dismiss_pull_request_review`, `GitHub.enable_auto_merge`, `GitHub.label_pr`, `GitHub.lock_issue_conversation`, `GitHub.mark_pull_request_ready_for_review`, `GitHub.merge_pull_request`, `GitHub.remove_issue_assignees`, `GitHub.remove_issue_label`, `GitHub.remove_pull_request_reviewers`, `GitHub.remove_reaction_from_issue_comment`, `GitHub.remove_reaction_from_pr`, `GitHub.remove_reaction_from_pr_review_comment`, `GitHub.reply_to_review_comment`, `GitHub.request_pull_request_reviewers`, `GitHub.rerun_failed_workflow_run_jobs`, `GitHub.rerun_workflow_job`, `GitHub.resolve_review_thread`, `GitHub.unlock_issue_conversation`, `GitHub.unresolve_review_thread`, `GitHub.update_file`, `GitHub.update_issue`, `GitHub.update_issue_comment`, `GitHub.update_pull_request`, `GitHub.update_ref`, `GitHub.update_review_comment`.
 
 ## Read-only tools
 
-`check_repo_initialized`, `compare_commits`, `download_git_tree_archive`, `download_user_content`, `download_workflow_artifact`, `fetch`, `fetch_blob`, `fetch_commit`, `fetch_commit_workflow_runs`, `fetch_file`, `fetch_git_blob`, `fetch_issue`, `fetch_issue_comments`, `fetch_pr`, `fetch_pr_comments`, `fetch_pr_file_patch`, `fetch_pr_patch`, `fetch_workflow_job_logs`, `fetch_workflow_job_steps`, `fetch_workflow_run_artifacts`, `fetch_workflow_run_jobs`, `get_check_run`, `get_commit_combined_status`, `get_commit_diff`, `get_commit_tree_sha`, `get_issue_comment_reactions`, `get_latest_check_run`, `get_pr_diff`, `get_pr_info`, `get_pr_reactions`, `get_pr_review_comment_reactions`, `get_profile`, `get_repo`, `get_repo_collaborator_permission`, `get_repo_installation_id`, `get_user_login`, `get_users_recent_prs_in_repo`, `list_commits`, `list_directory`, `list_git_tree`, `list_git_tree_recursive`, `list_installations`, `list_installed_accounts`, `list_pr_changed_filenames`, `list_pull_request_review_threads`, `list_pull_request_reviews`, `list_recent_issues`, `list_repositories`, `list_repositories_by_affiliation`, `list_repositories_by_installation`, `list_user_org_memberships`, `list_user_orgs`, `resolve_ref`, `search`, `search_branches`, `search_commits`, `search_installed_repositories_streaming`, `search_installed_repositories_v2`, `search_issues`, `search_prs`, `search_repositories`.
+`GitHub.compare_commits`, `GitHub.download_user_content`, `GitHub.download_workflow_artifact`, `GitHub.fetch`, `GitHub.fetch_blob`, `GitHub.fetch_commit`, `GitHub.fetch_commit_workflow_runs`, `GitHub.fetch_file`, `GitHub.fetch_issue`, `GitHub.fetch_issue_comments`, `GitHub.fetch_pr`, `GitHub.fetch_pr_comments`, `GitHub.fetch_pr_file_patch`, `GitHub.fetch_pr_patch`, `GitHub.fetch_workflow_job_logs`, `GitHub.fetch_workflow_job_steps`, `GitHub.fetch_workflow_run_artifacts`, `GitHub.fetch_workflow_run_jobs`, `GitHub.get_commit_combined_status`, `GitHub.get_issue_comment_reactions`, `GitHub.get_pr_diff`, `GitHub.get_pr_info`, `GitHub.get_pr_reactions`, `GitHub.get_pr_review_comment_reactions`, `GitHub.get_profile`, `GitHub.get_repo`, `GitHub.get_repo_collaborator_permission`, `GitHub.get_user_login`, `GitHub.get_users_recent_prs_in_repo`, `GitHub.list_installations`, `GitHub.list_installed_accounts`, `GitHub.list_pr_changed_filenames`, `GitHub.list_pull_request_review_threads`, `GitHub.list_pull_request_reviews`, `GitHub.list_recent_issues`, `GitHub.list_repositories`, `GitHub.list_repositories_by_affiliation`, `GitHub.list_repositories_by_installation`, `GitHub.list_user_org_memberships`, `GitHub.list_user_orgs`, `GitHub.search`, `GitHub.search_branches`, `GitHub.search_commits`, `GitHub.search_installed_repositories_streaming`, `GitHub.search_installed_repositories_v2`, `GitHub.search_issues`, `GitHub.search_prs`, `GitHub.search_repositories`.
 
 ## Operating rules
 
 - Treat GitHub as canonical for BKE engineering work.
 - Inspect current state and record the exact starting SHA before changing code.
-- Use read-only GitHub tools for discovery and verification; use write tools only when the user requests a mutation.
+- Use read-only `GitHub.*` callables for discovery and verification; use write `GitHub.*` callables only when the user requests a mutation.
 - Prefer the smallest surgical change that satisfies the request.
 - Preserve existing branches, workflows, and unrelated changes.
 - Treat CI failures as evidence; patch only failures that are understood and relevant to the requested work.
 - Verify the exact resulting commit, checks, and workflow state after writes.
-- Never claim a write occurred unless the underlying GitHub tool confirms it.
+- Never claim a write occurred unless the GitHub connector confirms it.
