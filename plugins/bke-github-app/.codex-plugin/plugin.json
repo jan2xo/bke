@@ -1,0 +1,18 @@
+{
+  "name": "bke-github-app",
+  "version": "0.1.0",
+  "description": "Reusable GitHub App tool catalog with explicit read-only and write capabilities.",
+  "author": {
+    "name": "BKE Digital Solutions"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "BKE GitHub App",
+    "shortDescription": "Canonical GitHub read/write tool catalog.",
+    "longDescription": "Use the connected GitHub App with a clearly separated catalog of mutation tools and read-only inspection tools.",
+    "developerName": "BKE Digital Solutions",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": ["Inspect a GitHub repository", "Patch a GitHub file", "Verify a GitHub workflow"]
+  }
+}
