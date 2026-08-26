@@ -1,15 +1,15 @@
 {
   "name": "bke",
   "version": "0.1.0",
-  "description": "BKE GitHub-first engineering policy wrapper with an explicit approved read-only and write tool catalog.",
+  "description": "BKE GitHub-first engineering policy wrapper with an explicit approved read-only and write catalog using the GitHub connector callable namespace.",
   "author": {
     "name": "BKE Digital Solutions"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "BKE",
-    "shortDescription": "BKE GitHub read/write policy wrapper.",
-    "longDescription": "Apply BKE GitHub-first engineering rules with an explicit approved read/write catalog, while invoking only GitHub tools actually exposed in the current runtime.",
+    "shortDescription": "BKE wrapper for GitHub.* callables.",
+    "longDescription": "Apply BKE GitHub-first engineering rules and invoke approved operations through the GitHub connector's actual `GitHub.*` callable namespace exposed in the current runtime.",
     "developerName": "BKE Digital Solutions",
     "category": "Developer Tools",
     "capabilities": ["Read", "Write"],
