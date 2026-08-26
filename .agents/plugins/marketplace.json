@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "bke-github-app",
+      "name": "bke",
       "source": {
         "source": "local",
-        "path": "./plugins/bke-github-app"
+        "path": "./plugins/bke"
       },
       "policy": {
         "installation": "AVAILABLE",
