@@ -1,15 +1,15 @@
 {
   "name": "bke",
   "version": "0.1.0",
-  "description": "Reusable BKE GitHub App tool catalog with explicit read-only and write capabilities.",
+  "description": "BKE GitHub-first engineering policy wrapper that uses the GitHub tools exposed in the current runtime.",
   "author": {
     "name": "BKE Digital Solutions"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "BKE",
-    "shortDescription": "Canonical BKE GitHub read/write tool catalog.",
-    "longDescription": "Use the connected GitHub App with the BKE-approved read-only and write tool catalog.",
+    "shortDescription": "BKE GitHub engineering policy wrapper.",
+    "longDescription": "Apply BKE GitHub-first engineering rules while using only the GitHub tools actually available in the current runtime.",
     "developerName": "BKE Digital Solutions",
     "category": "Developer Tools",
     "capabilities": ["Read", "Write"],
